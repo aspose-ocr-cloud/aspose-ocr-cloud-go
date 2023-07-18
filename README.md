@@ -1,0 +1,1 @@
+# aspose-ocr-aspose-ocr-cloud-golang
