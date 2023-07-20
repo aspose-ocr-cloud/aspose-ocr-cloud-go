@@ -1,4 +1,4 @@
-# Aspose.OCR Cloud SDK for Go 23.6.0
+# Aspose.OCR Cloud SDK for Go 23.7.0
 
 [![License](https://img.shields.io/github/license/aspose-ocr-cloud/aspose-ocr-cloud-dotnet)](LICENSE)
 
@@ -19,10 +19,8 @@ Aspose.OCR Cloud SDK for Go is open source under the MIT license. You can freely
 
 - Internet connection.
 - Access to the **api.aspose.cloud** domain.
-- Операционка (если вообще роляет; если нет - то все подряд перечислять не надо).
-- Версия Гоу.
-- Сторонние депенденси, если нужно установить.
-- Гоу ведь компилируемый язык, в результате будет стандартное исполняемое приложение, не требующее интерпретатора?
+- Go version 1.18
+- The actual dependencies are listed in go.mod file
 
 ## Get started
 
@@ -56,15 +54,56 @@ Aspose.OCR Cloud follows industry standards and best practices to keep your data
 
 ### Running demo
 
-1. Вот тут надо описать шаги
-2. Чтот надо сделать для запуска демо-приложения
-3. В какую строчку кода вписать **Client ID** и **Client Secret**
-4. И как запустить проект
-5. Как будет готово, я вычитаю. Можно по-русски написать, если будет удобнее.
+1. Clone our repository
+2. Open [examples\example.go](examples\example.go) file and replace "YOUR_CLIENT_ID" and "YOUR_CLIENT_SECRET" with your credentials 
+```go
+
+func main(){
+	
+	clientId := "YOUR_CLIENT_ID"
+	clientSecret := "YOUR_CLIENT_SECRET"
+  ...
+```
+3. Open a new terminal and navigate to the aspose-ocr-cloud-go/example/ directory
+```shell
+cd <path_to_sdk>/aspose-ocr-cloud-go/example/
+```
+4. Run example
+```shell
+go run .\example.go
+```
+5. Files with test results will appear in the aspose-ocr-cloud-go/results/ folder
+
+Also, as a demo application, you can use the tests
+1. Clone our repository
+2. Install dependencies 
+```shell
+go get github.com/stretchr/testify/assert
+go get github.com/stretchr/testify/require
+go get golang.org/x/oauth2
+```
+2. In the file [test/test_config.go](test/test_config.go) enter **Client ID** and **Client Secret**
+```go
+package asposeocrcloud
+
+var (
+	ConfigClientID = "YOUR_CLIENT_ID"
+	ConfigClientSecret = "YOUR_CLIENT_SECRET"
+)
+```
+3. Open a new terminal and navigate to the aspose-ocr-cloud-go/test/ directory
+```shell
+cd <path_to_sdk>/aspose-ocr-cloud-go/test/
+```
+4. Run the tests with the command
+```
+go test github.com/aspose-ocr-cloud/aspose-ocr-cloud-go/test
+```
+5. Files with test results will appear in the aspose-ocr-cloud-go/results/ folder
 
 [Download demo as ZIP archive](https://github.com/aspose-ocr-cloud/aspose-ocr-cloud-go/archive/refs/heads/master.zip)
 
-## What was changed in version 23.6.0
+## What was changed in version 23.7.0
 
 This is the first release of Aspose.OCR Cloud SDK for Go. It supports all the features of [Aspose.OCR Cloud REST API 23.6.0](https://releases.aspose.cloud/ocr/release-notes/2023/aspose-ocr-cloud-23-6-0-release-notes/).
 
@@ -72,7 +111,7 @@ Stay tuned for further updates.
 
 ### Public API changes and backwards compatibility
 
-This section lists all public API changes introduced in **Aspose.OCR Cloud SDK for Go 23.6.0** that may affect the code of existing applications.
+This section lists all public API changes introduced in **Aspose.OCR Cloud SDK for Go 23.7.0** that may affect the code of existing applications.
 
 #### Added public APIs:
 
@@ -91,8 +130,93 @@ _No changes._
 The example below illustrates how to use Aspose.OCR Cloud SDK for Go to extract text from an image:
 
 ```go
-Вот на Гоу я ни разу ничего не писал, от слова "совсем"
-Так что пример даже проверить не смогу
+package main
+
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"io/ioutil"
+	asposeocrcloud "github.com/aspose-ocr-cloud/aspose-ocr-cloud-go"
+)
+
+func main(){
+	
+	clientId := "YOUR_CLIENT_ID"
+	clientSecret := "YOUR_CLIENT_SECRET"
+	configuration := asposeocrcloud.NewConfiguration(clientId, clientSecret)
+	apiClient := asposeocrcloud.NewAPIClient(configuration)
+
+	
+	filePath := "../samples/latin.png" // Path to your file
+	
+		// Read your file data and convert it into base64 string
+		fileBytes, err := ioutil.ReadFile(filePath)
+		if err != nil || fileBytes == nil {
+			fmt.Println("Read file error:", err)
+			return
+		}
+		fileb64Encoded := base64.StdEncoding.EncodeToString(fileBytes)
+
+		// Step 1: create request body and sent it to OCR Cloud to receive task ID
+		recognitionSettings := *asposeocrcloud.NewOCRSettingsRecognizeImage()
+		recognitionSettings.Language = asposeocrcloud.LANGUAGE_ENGLISH.Ptr()
+		recognitionSettings.DsrMode = asposeocrcloud.DSRMODE_NO_DSR_NO_FILTER.Ptr()
+		recognitionSettings.DsrConfidence = asposeocrcloud.DSRCONFIDENCE_DEFAULT.Ptr()
+		*recognitionSettings.MakeBinarization = false
+		*recognitionSettings.MakeSkewCorrect = false
+		*recognitionSettings.MakeUpsampling = false
+		*recognitionSettings.MakeSpellCheck = false
+		*recognitionSettings.MakeContrastCorrection = false
+		recognitionSettings.ResultType = asposeocrcloud.RESULTTYPE_TEXT.Ptr()
+		recognitionSettings.ResultTypeTable = asposeocrcloud.RESULTTYPETABLE_TEXT.Ptr()
+
+		requestBody := *asposeocrcloud.NewOCRRecognizeImageBody(
+			fileb64Encoded,
+			recognitionSettings,
+		)
+
+		taskId, httpRes, err := apiClient.RecognizeImageApi.PostRecognizeImage(context.Background()).OCRRecognizeImageBody(requestBody).Execute()
+		if err != nil || httpRes.StatusCode != 200 {
+			fmt.Println("API error:", err)
+			return
+		}
+
+		fmt.Printf("File successfully sent. Your TaskID is %s \n", taskId)
+
+		// Step 2: request task results using task ID
+		ocrResp, httpRes, err := apiClient.RecognizeImageApi.GetRecognizeImage(context.Background()).Id(taskId).Execute()
+		if err != nil|| httpRes.StatusCode != 200 || ocrResp == nil {
+			fmt.Println("API error:", err)
+			return
+		}
+		
+		if *ocrResp.TaskStatus == asposeocrcloud.OCRTASKSTATUS_COMPLETED {
+			if !ocrResp.Results[0].Data.IsSet() {
+				fmt.Println("Response is empty")
+				return
+			}
+
+			// Decode results and write to file
+			decodedBytes, err := base64.StdEncoding.DecodeString(*ocrResp.Results[0].Data.Get())
+			if err != nil {
+				fmt.Println("Decode error:", err)
+				return
+			}
+
+			resultFilePath := "../results/" + taskId + ".txt"
+			err = ioutil.WriteFile(resultFilePath, decodedBytes, 0644)
+			if err != nil {
+				fmt.Println("Write file error:", err)
+				return
+			}
+
+			fmt.Printf("Task result successfully saved at %s \n", resultFilePath)
+		} else {
+			fmt.Printf("Sorry, task %s is not completed yet. You can request results later. Task status: %s\n", taskId, *ocrResp.TaskStatus)
+		}
+}
 ```
 
 ## Other Aspose.OCR Cloud SDKs
