@@ -55,8 +55,12 @@ Aspose.OCR Cloud follows industry standards and best practices to keep your data
 ### Running demo
 
 1. Clone our repository
-2. Open [examples\example.go](examples\example.go) file and replace "YOUR_CLIENT_ID" and "YOUR_CLIENT_SECRET" with your credentials 
-```go
+2. Install package 
+```shell
+go get github.com/aspose-ocr-cloud/aspose-ocr-cloud-go
+```
+3. Open [examples\example.go](examples\example.go) file and replace "YOUR_CLIENT_ID" and "YOUR_CLIENT_SECRET" with your credentials 
+```go 
 
 func main(){
 	
@@ -64,15 +68,15 @@ func main(){
 	clientSecret := "YOUR_CLIENT_SECRET"
   ...
 ```
-3. Open a new terminal and navigate to the aspose-ocr-cloud-go/example/ directory
+4. Open a new terminal and navigate to the aspose-ocr-cloud-go/example/ directory
 ```shell
 cd <path_to_sdk>/aspose-ocr-cloud-go/example/
 ```
-4. Run example
+5. Run example
 ```shell
 go run .\example.go
 ```
-5. Files with test results will appear in the aspose-ocr-cloud-go/results/ folder
+6. Files with test results will appear in the aspose-ocr-cloud-go/results/ folder
 
 Also, as a demo application, you can use the tests
 1. Clone our repository
@@ -82,7 +86,7 @@ go get github.com/stretchr/testify/assert
 go get github.com/stretchr/testify/require
 go get golang.org/x/oauth2
 ```
-2. In the file [test/test_config.go](test/test_config.go) enter **Client ID** and **Client Secret**
+3. In the file [test/test_config.go](test/test_config.go) enter **Client ID** and **Client Secret**
 ```go
 package asposeocrcloud
 
@@ -91,15 +95,15 @@ var (
 	ConfigClientSecret = "YOUR_CLIENT_SECRET"
 )
 ```
-3. Open a new terminal and navigate to the aspose-ocr-cloud-go/test/ directory
+4. Open a new terminal and navigate to the aspose-ocr-cloud-go/test/ directory
 ```shell
 cd <path_to_sdk>/aspose-ocr-cloud-go/test/
 ```
-4. Run the tests with the command
+5. Run the tests with the command
 ```
 go test github.com/aspose-ocr-cloud/aspose-ocr-cloud-go/test
 ```
-5. Files with test results will appear in the aspose-ocr-cloud-go/results/ folder
+6. Files with test results will appear in the aspose-ocr-cloud-go/results/ folder
 
 [Download demo as ZIP archive](https://github.com/aspose-ocr-cloud/aspose-ocr-cloud-go/archive/refs/heads/master.zip)
 
