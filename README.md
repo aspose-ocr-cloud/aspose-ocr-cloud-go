@@ -17,10 +17,11 @@ Aspose.OCR Cloud SDK for Go is open source under the MIT license. You can freely
 
 ## System requirements
 
+- Go 1.18 or later.
 - Internet connection.
 - Access to the **api.aspose.cloud** domain.
-- Go version 1.18
-- The actual dependencies are listed in go.mod file
+
+Check [go.mod](go.mod) file for the full list of third-party dependencies.
 
 ## Get started
 
@@ -54,39 +55,37 @@ Aspose.OCR Cloud follows industry standards and best practices to keep your data
 
 ### Running demo
 
-1. Clone our repository
-2. Install package 
+1. Clone this repository or [download](https://github.com/aspose-ocr-cloud/aspose-ocr-cloud-go/archive/refs/heads/master.zip) it as ZIP.
+3. Install **Aspose.OCR Cloud SDK for Go** package:
 ```shell
 go get github.com/aspose-ocr-cloud/aspose-ocr-cloud-go
 ```
-3. Open [examples\example.go](examples\example.go) file and replace "YOUR_CLIENT_ID" and "YOUR_CLIENT_SECRET" with your credentials 
+3. Open [examples/example.go](examples/example.go) file and replace "YOUR_CLIENT_ID" and "YOUR_CLIENT_SECRET" with credentials obtained during **Authorization** phase:
 ```go 
+func main() {
 
-func main(){
-	
 	clientId := "YOUR_CLIENT_ID"
 	clientSecret := "YOUR_CLIENT_SECRET"
-  ...
 ```
-4. Open a new terminal and navigate to the aspose-ocr-cloud-go/example/ directory
-```shell
-cd <path_to_sdk>/aspose-ocr-cloud-go/example/
-```
-5. Run example
+4. Open the terminal and navigate to the _example_ directory of the downloaded repository.
+5. Run the example:
 ```shell
 go run .\example.go
 ```
-6. Files with test results will appear in the aspose-ocr-cloud-go/results/ folder
+6. Recognition results will be saved to the `results` directory of the downloaded repository.
 
-Also, as a demo application, you can use the tests
-1. Clone our repository
-2. Install dependencies 
+### Running tests
+
+We also provide automated tests for [Testify](https://github.com/stretchr/testify).
+
+1. Clone this repository or [download](https://github.com/aspose-ocr-cloud/aspose-ocr-cloud-go/archive/refs/heads/master.zip) it as ZIP.
+2. Install dependencies:
 ```shell
 go get github.com/stretchr/testify/assert
 go get github.com/stretchr/testify/require
 go get golang.org/x/oauth2
 ```
-3. In the file [test/test_config.go](test/test_config.go) enter **Client ID** and **Client Secret**
+3. Open [test/test_config.go](test/test_config.go) file and replace "YOUR_CLIENT_ID" and "YOUR_CLIENT_SECRET" with credentials obtained during **Authorization** phase:
 ```go
 package asposeocrcloud
 
@@ -95,17 +94,12 @@ var (
 	ConfigClientSecret = "YOUR_CLIENT_SECRET"
 )
 ```
-4. Open a new terminal and navigate to the aspose-ocr-cloud-go/test/ directory
-```shell
-cd <path_to_sdk>/aspose-ocr-cloud-go/test/
-```
-5. Run the tests with the command
+4. Open the terminal and navigate to the _test_ directory of the downloaded repository.
+5. Run tests:
 ```
 go test github.com/aspose-ocr-cloud/aspose-ocr-cloud-go/test
 ```
-6. Files with test results will appear in the aspose-ocr-cloud-go/results/ folder
-
-[Download demo as ZIP archive](https://github.com/aspose-ocr-cloud/aspose-ocr-cloud-go/archive/refs/heads/master.zip)
+6. Test results will be saved to the `results` directory of the downloaded repository.
 
 ## What was changed in version 23.7.0
 
