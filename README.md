@@ -1,12 +1,13 @@
-# Aspose.OCR Cloud SDK for Go 23.7.0
+# Aspose.OCR Cloud SDK for Go 23.12.0
 
 [![License](https://img.shields.io/github/license/aspose-ocr-cloud/aspose-ocr-cloud-dotnet)](LICENSE)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/aspose-ocr-cloud/aspose-ocr-cloud-go)
+
 [Aspose.OCR Cloud](https://products.aspose.cloud/ocr/) is an optical character recognition as a service. With it, you can easily add OCR functionality to almost any device or platform: cloud, web, PCs, netbooks, or even entry-level smartphones.
 
 Our engine can read text from images, photos, screenshots and scanned PDFs in a wide variety of European, Cyrillic and Oriental fonts, returning results in the most popular document formats. Powerful built-in image processing filters based on neural networks automatically correct skewed and distorted images, automatically remove dirt, smudges, scratches, glare and other image defects that can affect recognition accuracy. To further improve the results, Aspose.OCR Cloud has a built-in spell checker that automatically replaces misspelled words and saves you the trouble of manually correcting the recognition results.
 
-**Aspose.OCR Cloud SDK for Go** greatly simplifies interaction with Aspose.OCR Cloud services by providing a programming library for Go developers. It handles all the routine operations such as establishing connections, sending API requests, and parsing responses, wrapping all these tasks into higher level abstractions. Even the complex recognition tasks can be done with a few lines of native Go code.
+Even the complex recognition tasks can be done with a couple of API calls. To make interacting with Aspose.OCR Cloud services from Go applications even easier, we provide the software development kit (SDK) for Go. It handles all the routine operations such as establishing connections, sending API requests, and parsing responses, wrapping all these tasks into a few simple classes.
 
 Aspose.OCR Cloud SDK for Go is open source under the MIT license. You can freely use it for any projects, including commercial and proprietary applications, as well as modify any part of its code.
 
@@ -101,19 +102,33 @@ go test github.com/aspose-ocr-cloud/aspose-ocr-cloud-go/test
 ```
 6. Test results will be saved to the `results` directory of the downloaded repository.
 
-## What was changed in version 23.7.0
+## What was changed in version 23.12.0
 
-This is the first release of Aspose.OCR Cloud SDK for Go. It supports all the features of [Aspose.OCR Cloud REST API 23.6.0](https://releases.aspose.cloud/ocr/release-notes/2023/aspose-ocr-cloud-23-6-0-release-notes/).
+A summary of recent changes, enhancements and bug fixes in **Aspose.OCR Cloud SDK for .NET 23.12.0** release:
 
-Stay tuned for further updates.
+Key | Summary | Category
+--- | ------- | --------
+OCR&#8209;3737 | Added a free API for evaluating image recognition without [authorization](/ocr/authorization/).<br />Some restrictions apply. See below for details. | New feature
 
 ### Public API changes and backwards compatibility
 
-This section lists all public API changes introduced in **Aspose.OCR Cloud SDK for Go 23.7.0** that may affect the code of existing applications.
+This section lists all public API changes introduced in **Aspose.OCR Cloud SDK for .NET 23.12.0** that may affect the code of existing applications.
 
 #### Added public APIs:
 
-_No changes_
+The following public APIs have been introduced in this release:
+
+##### Image recognition evaluation
+
+The following new classes have been added:
+
+Class | Description
+----- | -----------
+`RecognizeImageTrialApi` | Image recognition API that works without authorization.
+
+**Important:** In recognition results, 10% of the words are substituted with asterisks (`*`). The sequence of masked words remains unchanged upon re-submitting the identical image for recognition.
+
+[Learn more...](https://docs.aspose.cloud/ocr/recognize-image/)
 
 #### Updated public APIs:
 
@@ -219,8 +234,8 @@ func main(){
 
 ## Other Aspose.OCR Cloud SDKs
 
-- [Aspose.OCR Cloud for .NET](https://github.com/aspose-ocr-cloud/aspose-ocr-cloud-dotnet/)  
-  Extract text with Aspose.OCR Cloud API in your .NET cloud, online and on-premises applications.
+- [Aspose.OCR Cloud for Go](https://github.com/aspose-ocr-cloud/aspose-ocr-cloud-dotnet/)  
+  Extract text with Aspose.OCR Cloud API in your Go cloud, online and on-premises applications.
 - [Aspose.OCR Cloud for Java](https://github.com/aspose-ocr-cloud/aspose-ocr-cloud-java)  
   Call Aspose.OCR Cloud API from cross-platform Java apps.
 - [Aspose.OCR Cloud for Python](https://github.com/aspose-ocr-cloud/aspose-ocr-cloud-python)  

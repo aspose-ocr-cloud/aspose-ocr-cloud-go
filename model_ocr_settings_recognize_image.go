@@ -48,7 +48,7 @@ func NewOCRSettingsRecognizeImage() *OCRSettingsRecognizeImage {
 	this.MakeBinarization = &makeBinarization
 	var makeSpellCheck bool = false
 	this.MakeSpellCheck = &makeSpellCheck
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeUpsampling bool = false
 	this.MakeUpsampling = &makeUpsampling
@@ -66,7 +66,7 @@ func NewOCRSettingsRecognizeImageWithDefaults() *OCRSettingsRecognizeImage {
 	this.MakeBinarization = &makeBinarization
 	var makeSpellCheck bool = false
 	this.MakeSpellCheck = &makeSpellCheck
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeUpsampling bool = false
 	this.MakeUpsampling = &makeUpsampling

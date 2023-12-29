@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MakeSkewCorrect** | Pointer to **bool** |  | [optional] [default to true]
-**MakeContrastCorrection** | Pointer to **bool** |  | [optional] [default to true]
+**MakeContrastCorrection** | Pointer to **bool** |  | [optional] [default to false]
 **MakeUpsampling** | Pointer to **bool** |  | [optional] [default to false]
 **DsrConfidence** | Pointer to [**DsrConfidence**](DsrConfidence.md) |  | [optional] 
 **Language** | Pointer to [**Language**](Language.md) |  | [optional] 

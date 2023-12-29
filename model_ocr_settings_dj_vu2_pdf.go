@@ -25,6 +25,7 @@ type OCRSettingsDjVu2PDF struct {
 	// Option to enable spell checking and correction algorithm. False by default
 	MakeSpellCheck *bool `json:"makeSpellCheck,omitempty"`
 	// Option to enable image contrast correction algorithm. True by default
+	// Deprecated
 	MakeContrastCorrection *bool `json:"makeContrastCorrection,omitempty"`
 	MakeBinarization *bool `json:"makeBinarization,omitempty"`
 	// Option to enable image up-sampling algorithm to improve quality. True by default
@@ -46,7 +47,7 @@ func NewOCRSettingsDjVu2PDF() *OCRSettingsDjVu2PDF {
 	this.MakeSkewCorrect = &makeSkewCorrect
 	var makeSpellCheck bool = false
 	this.MakeSpellCheck = &makeSpellCheck
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeBinarization bool = true
 	this.MakeBinarization = &makeBinarization
@@ -64,7 +65,7 @@ func NewOCRSettingsDjVu2PDFWithDefaults() *OCRSettingsDjVu2PDF {
 	this.MakeSkewCorrect = &makeSkewCorrect
 	var makeSpellCheck bool = false
 	this.MakeSpellCheck = &makeSpellCheck
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeBinarization bool = true
 	this.MakeBinarization = &makeBinarization
@@ -202,6 +203,7 @@ func (o *OCRSettingsDjVu2PDF) SetMakeSpellCheck(v bool) {
 }
 
 // GetMakeContrastCorrection returns the MakeContrastCorrection field value if set, zero value otherwise.
+// Deprecated
 func (o *OCRSettingsDjVu2PDF) GetMakeContrastCorrection() bool {
 	if o == nil || IsNil(o.MakeContrastCorrection) {
 		var ret bool
@@ -212,6 +214,7 @@ func (o *OCRSettingsDjVu2PDF) GetMakeContrastCorrection() bool {
 
 // GetMakeContrastCorrectionOk returns a tuple with the MakeContrastCorrection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *OCRSettingsDjVu2PDF) GetMakeContrastCorrectionOk() (*bool, bool) {
 	if o == nil || IsNil(o.MakeContrastCorrection) {
 		return nil, false
@@ -229,6 +232,7 @@ func (o *OCRSettingsDjVu2PDF) HasMakeContrastCorrection() bool {
 }
 
 // SetMakeContrastCorrection gets a reference to the given bool and assigns it to the MakeContrastCorrection field.
+// Deprecated
 func (o *OCRSettingsDjVu2PDF) SetMakeContrastCorrection(v bool) {
 	o.MakeContrastCorrection = &v
 }

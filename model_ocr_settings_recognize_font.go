@@ -21,6 +21,7 @@ type OCRSettingsRecognizeFont struct {
 	Language *Language `json:"language,omitempty"`
 	MakeSkewCorrect *bool `json:"makeSkewCorrect,omitempty"`
 	MakeSpellCheck *bool `json:"makeSpellCheck,omitempty"`
+	// Deprecated
 	MakeContrastCorrection *bool `json:"makeContrastCorrection,omitempty"`
 	ResultType *ResultType `json:"resultType,omitempty"`
 	Rotate *int32 `json:"Rotate,omitempty"`
@@ -43,7 +44,7 @@ func NewOCRSettingsRecognizeFont() *OCRSettingsRecognizeFont {
 	this.MakeSkewCorrect = &makeSkewCorrect
 	var makeSpellCheck bool = false
 	this.MakeSpellCheck = &makeSpellCheck
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeBinarization bool = true
 	this.MakeBinarization = &makeBinarization
@@ -61,7 +62,7 @@ func NewOCRSettingsRecognizeFontWithDefaults() *OCRSettingsRecognizeFont {
 	this.MakeSkewCorrect = &makeSkewCorrect
 	var makeSpellCheck bool = false
 	this.MakeSpellCheck = &makeSpellCheck
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeBinarization bool = true
 	this.MakeBinarization = &makeBinarization
@@ -167,6 +168,7 @@ func (o *OCRSettingsRecognizeFont) SetMakeSpellCheck(v bool) {
 }
 
 // GetMakeContrastCorrection returns the MakeContrastCorrection field value if set, zero value otherwise.
+// Deprecated
 func (o *OCRSettingsRecognizeFont) GetMakeContrastCorrection() bool {
 	if o == nil || IsNil(o.MakeContrastCorrection) {
 		var ret bool
@@ -177,6 +179,7 @@ func (o *OCRSettingsRecognizeFont) GetMakeContrastCorrection() bool {
 
 // GetMakeContrastCorrectionOk returns a tuple with the MakeContrastCorrection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *OCRSettingsRecognizeFont) GetMakeContrastCorrectionOk() (*bool, bool) {
 	if o == nil || IsNil(o.MakeContrastCorrection) {
 		return nil, false
@@ -194,6 +197,7 @@ func (o *OCRSettingsRecognizeFont) HasMakeContrastCorrection() bool {
 }
 
 // SetMakeContrastCorrection gets a reference to the given bool and assigns it to the MakeContrastCorrection field.
+// Deprecated
 func (o *OCRSettingsRecognizeFont) SetMakeContrastCorrection(v bool) {
 	o.MakeContrastCorrection = &v
 }

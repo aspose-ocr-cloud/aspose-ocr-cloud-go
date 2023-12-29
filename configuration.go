@@ -90,7 +90,7 @@ type Configuration struct {
 func NewConfiguration(clientId string, clientSecret string) *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "Aspose.OCR Cloud SDK for Go 23.7.0",
+		UserAgent:        "Aspose.OCR Cloud SDK for Go 23.12.0",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{

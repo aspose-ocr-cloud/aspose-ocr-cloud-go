@@ -21,6 +21,7 @@ type OCRSettingsRecognizeRegions struct {
 	Language *Language `json:"language,omitempty"`
 	MakeSkewCorrect *bool `json:"makeSkewCorrect,omitempty"`
 	MakeSpellCheck *bool `json:"makeSpellCheck,omitempty"`
+	// Deprecated
 	MakeContrastCorrection *bool `json:"makeContrastCorrection,omitempty"`
 	MakeUpsampling *bool `json:"makeUpsampling,omitempty"`
 	Regions []OCRRegion `json:"regions,omitempty"`
@@ -42,7 +43,7 @@ func NewOCRSettingsRecognizeRegions() *OCRSettingsRecognizeRegions {
 	this.MakeSkewCorrect = &makeSkewCorrect
 	var makeSpellCheck bool = false
 	this.MakeSpellCheck = &makeSpellCheck
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeUpsampling bool = false
 	this.MakeUpsampling = &makeUpsampling
@@ -60,7 +61,7 @@ func NewOCRSettingsRecognizeRegionsWithDefaults() *OCRSettingsRecognizeRegions {
 	this.MakeSkewCorrect = &makeSkewCorrect
 	var makeSpellCheck bool = false
 	this.MakeSpellCheck = &makeSpellCheck
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeUpsampling bool = false
 	this.MakeUpsampling = &makeUpsampling
@@ -166,6 +167,7 @@ func (o *OCRSettingsRecognizeRegions) SetMakeSpellCheck(v bool) {
 }
 
 // GetMakeContrastCorrection returns the MakeContrastCorrection field value if set, zero value otherwise.
+// Deprecated
 func (o *OCRSettingsRecognizeRegions) GetMakeContrastCorrection() bool {
 	if o == nil || IsNil(o.MakeContrastCorrection) {
 		var ret bool
@@ -176,6 +178,7 @@ func (o *OCRSettingsRecognizeRegions) GetMakeContrastCorrection() bool {
 
 // GetMakeContrastCorrectionOk returns a tuple with the MakeContrastCorrection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *OCRSettingsRecognizeRegions) GetMakeContrastCorrectionOk() (*bool, bool) {
 	if o == nil || IsNil(o.MakeContrastCorrection) {
 		return nil, false
@@ -193,6 +196,7 @@ func (o *OCRSettingsRecognizeRegions) HasMakeContrastCorrection() bool {
 }
 
 // SetMakeContrastCorrection gets a reference to the given bool and assigns it to the MakeContrastCorrection field.
+// Deprecated
 func (o *OCRSettingsRecognizeRegions) SetMakeContrastCorrection(v bool) {
 	o.MakeContrastCorrection = &v
 }

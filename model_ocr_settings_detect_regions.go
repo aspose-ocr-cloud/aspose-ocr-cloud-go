@@ -41,7 +41,7 @@ func NewOCRSettingsDetectRegions() *OCRSettingsDetectRegions {
 	this := OCRSettingsDetectRegions{}
 	var makeSkewCorrect bool = true
 	this.MakeSkewCorrect = &makeSkewCorrect
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeUpsampling bool = false
 	this.MakeUpsampling = &makeUpsampling
@@ -59,7 +59,7 @@ func NewOCRSettingsDetectRegionsWithDefaults() *OCRSettingsDetectRegions {
 	this := OCRSettingsDetectRegions{}
 	var makeSkewCorrect bool = true
 	this.MakeSkewCorrect = &makeSkewCorrect
-	var makeContrastCorrection bool = true
+	var makeContrastCorrection bool = false
 	this.MakeContrastCorrection = &makeContrastCorrection
 	var makeUpsampling bool = false
 	this.MakeUpsampling = &makeUpsampling

@@ -11,7 +11,7 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"testing"
 	"time"
 
@@ -34,7 +34,7 @@ func Test_asposeocrcloud_DewarpImageApiService(t *testing.T) {
 		filePath := "../samples/dewarping.png" // Path to your file
 
 		// Read your file data and convert it into base64 string
-		fileBytes, err := ioutil.ReadFile(filePath)
+		fileBytes, err := os.ReadFile(filePath)
 		require.Nil(t, err)
 		require.NotNil(t, fileBytes)
 		fileb64Encoded := base64.StdEncoding.EncodeToString(fileBytes)
@@ -68,7 +68,7 @@ func Test_asposeocrcloud_DewarpImageApiService(t *testing.T) {
 			}
 
 			resultFilePath := "../results/" + taskId + ".png"
-			err = ioutil.WriteFile(resultFilePath, decodedBytes, 0644)
+			err = os.WriteFile(resultFilePath, decodedBytes, 0644)
 			if err != nil {
 				fmt.Println("Write file error:", err)
 				return

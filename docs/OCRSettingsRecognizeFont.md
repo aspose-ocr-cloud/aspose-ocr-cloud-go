@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Language** | Pointer to [**Language**](Language.md) |  | [optional] 
 **MakeSkewCorrect** | Pointer to **bool** |  | [optional] [default to true]
 **MakeSpellCheck** | Pointer to **bool** |  | [optional] [default to false]
-**MakeContrastCorrection** | Pointer to **bool** |  | [optional] [default to true]
+**MakeContrastCorrection** | Pointer to **bool** |  | [optional] [default to false]
 **ResultType** | Pointer to [**ResultType**](ResultType.md) |  | [optional] 
 **Rotate** | Pointer to **int32** |  | [optional] 
 **MakeBinarization** | Pointer to **bool** |  | [optional] [default to true]

@@ -53,6 +53,8 @@ type APIClient struct {
 
 	ConvertTextToSpeechApi *ConvertTextToSpeechApiService
 
+	ConvertTextToSpeechTrialApi *ConvertTextToSpeechTrialApiService
+
 	DeskewImageApi *DeskewImageApiService
 
 	DetectRegionsApi *DetectRegionsApiService
@@ -65,7 +67,11 @@ type APIClient struct {
 
 	ImageProcessingApi *ImageProcessingApiService
 
+	RecognizeAndParseInvoiceApi *RecognizeAndParseInvoiceApiService
+
 	RecognizeImageApi *RecognizeImageApiService
+
+	RecognizeImageTrialApi *RecognizeImageTrialApiService
 
 	RecognizeLabelApi *RecognizeLabelApiService
 
@@ -80,6 +86,8 @@ type APIClient struct {
 	TextToSpeechApi *TextToSpeechApiService
 
 	UpscaleImageApi *UpscaleImageApiService
+
+	UtilitiesApi *UtilitiesApiService
 }
 
 type service struct {
@@ -100,13 +108,16 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.BinarizeImageApi = (*BinarizeImageApiService)(&c.common)
 	c.ConvertTextToSpeechApi = (*ConvertTextToSpeechApiService)(&c.common)
+	c.ConvertTextToSpeechTrialApi = (*ConvertTextToSpeechTrialApiService)(&c.common)
 	c.DeskewImageApi = (*DeskewImageApiService)(&c.common)
 	c.DetectRegionsApi = (*DetectRegionsApiService)(&c.common)
 	c.DewarpImageApi = (*DewarpImageApiService)(&c.common)
 	c.DjVu2PDFApi = (*DjVu2PDFApiService)(&c.common)
 	c.IdentifyFontApi = (*IdentifyFontApiService)(&c.common)
 	c.ImageProcessingApi = (*ImageProcessingApiService)(&c.common)
+	c.RecognizeAndParseInvoiceApi = (*RecognizeAndParseInvoiceApiService)(&c.common)
 	c.RecognizeImageApi = (*RecognizeImageApiService)(&c.common)
+	c.RecognizeImageTrialApi = (*RecognizeImageTrialApiService)(&c.common)
 	c.RecognizeLabelApi = (*RecognizeLabelApiService)(&c.common)
 	c.RecognizePdfApi = (*RecognizePdfApiService)(&c.common)
 	c.RecognizeReceiptApi = (*RecognizeReceiptApiService)(&c.common)
@@ -114,6 +125,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RecognizeTableApi = (*RecognizeTableApiService)(&c.common)
 	c.TextToSpeechApi = (*TextToSpeechApiService)(&c.common)
 	c.UpscaleImageApi = (*UpscaleImageApiService)(&c.common)
+	c.UtilitiesApi = (*UtilitiesApiService)(&c.common)
 
 	return c
 }
@@ -452,21 +464,23 @@ func (c *APIClient) prepareRequest(
 	if ctx != nil {
 		// add context to the request
 		localVarRequest = localVarRequest.WithContext(ctx)
+		
+		if c.cfg.ClientId != ""{
+			// get OAuth2 token
+			oauthConfig := &oauth2cc.Config{
+				ClientID: c.cfg.ClientId,
+				ClientSecret: c.cfg.ClientSecret,
+				TokenURL: "https://api.aspose.cloud/connect/token",
+			}
 
-		// get OAuth2 token
-		oauthConfig := &oauth2cc.Config{
-			ClientID: c.cfg.ClientId,
-			ClientSecret: c.cfg.ClientSecret,
-			TokenURL: "https://api.aspose.cloud/connect/token",
+			// oauthToken := *oauthConfig.Token()
+			oauthToken, err := oauthConfig.Token(ctx)
+			if err != nil{
+				return localVarRequest, err
+			} else {
+				localVarRequest.Header.Add("Authorization", oauthToken.TokenType + " " + oauthToken.AccessToken)
+			}
 		}
-		// oauthToken := *oauthConfig.Token()
-		oauthToken, err := oauthConfig.Token(ctx)
-		if err != nil{
-			return localVarRequest, err
-		} else {
-			localVarRequest.Header.Add("Authorization", oauthToken.TokenType + " " + oauthToken.AccessToken)
-		}
-
 	}
 
 	for header, value := range c.cfg.DefaultHeader {

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Language** | Pointer to [**Language**](Language.md) |  | [optional] 
 **MakeSkewCorrect** | Pointer to **bool** | Option to enable skew correction algorithm. True by default | [optional] [default to true]
 **MakeSpellCheck** | Pointer to **bool** | Option to enable spell checking and correction algorithm. False by default | [optional] [default to false]
-**MakeContrastCorrection** | Pointer to **bool** | Option to enable image contrast correction algorithm. True by default | [optional] [default to true]
+**MakeContrastCorrection** | Pointer to **bool** | Option to enable image contrast correction algorithm. True by default | [optional] [default to false]
 **Rotate** | Pointer to **int32** |  | [optional] 
 **MakeBinarization** | Pointer to **bool** |  | [optional] [default to true]
 **MakeUpsampling** | Pointer to **bool** | Option to enable image up-sampling algorithm to improve quality. True by default | [optional] [default to false]

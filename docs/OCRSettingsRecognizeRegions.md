@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Language** | Pointer to [**Language**](Language.md) |  | [optional] 
 **MakeSkewCorrect** | Pointer to **bool** |  | [optional] [default to true]
 **MakeSpellCheck** | Pointer to **bool** |  | [optional] [default to false]
-**MakeContrastCorrection** | Pointer to **bool** |  | [optional] [default to true]
+**MakeContrastCorrection** | Pointer to **bool** |  | [optional] [default to false]
 **MakeUpsampling** | Pointer to **bool** |  | [optional] [default to false]
 **Regions** | Pointer to [**[]OCRRegion**](OCRRegion.md) |  | [optional] 
 **ResultType** | Pointer to [**ResultType**](ResultType.md) |  | [optional] 

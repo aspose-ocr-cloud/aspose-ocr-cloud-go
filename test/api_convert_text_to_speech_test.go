@@ -15,7 +15,7 @@ import (
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"io/ioutil"
+	"os"
 	"testing"
 	asposeocrcloud "github.com/aspose-ocr-cloud/aspose-ocr-cloud-go"
 )
@@ -68,7 +68,7 @@ func Test_asposeocrcloud_ConvertTextToSpeechApiService(t *testing.T) {
 			}
 	
 			resultFilePath := "../results/" + taskId + ".wav"
-			err = ioutil.WriteFile(resultFilePath, decodedBytes, 0644)
+			err = os.WriteFile(resultFilePath, decodedBytes, 0644)
 			if err != nil {
 				fmt.Println("Write file error:", err)
 				return

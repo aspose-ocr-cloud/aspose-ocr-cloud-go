@@ -11,7 +11,7 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"testing"
 
 	asposeocrcloud "github.com/aspose-ocr-cloud/aspose-ocr-cloud-go"
@@ -33,7 +33,7 @@ func Test_asposeocrcloud_DetectRegionsApiService(t *testing.T) {
 		filePath := "../samples/greek.PNG" // Path to your file
 
 		// Read your file data and convert it into base64 string
-		fileBytes, err := ioutil.ReadFile(filePath)
+		fileBytes, err := os.ReadFile(filePath)
 		require.Nil(t, err)
 		require.NotNil(t, fileBytes)
 		fileb64Encoded := base64.StdEncoding.EncodeToString(fileBytes)
@@ -57,9 +57,9 @@ func Test_asposeocrcloud_DetectRegionsApiService(t *testing.T) {
 		require.Nil(t, err)
 		require.NotNil(t, ocrResp)
 		assert.Equal(t, 200, httpRes.StatusCode)
-		if *ocrResp.TaskStatus == asposeocrcloud.OCRTASKSTATUS_COMPLETED{
+		if *ocrResp.TaskStatus == asposeocrcloud.OCRTASKSTATUS_COMPLETED {
 			require.NotNil(t, ocrResp.Results[0].Data)
-			
+
 			// Decode results and write to file
 			// The detected regions are presented as a text string containing an entry of the form [[topLeftPixelX, topLeftPixelY, bottomRightPixelX, bottomRightPixelY], ...]
 			decodedBytes, err := base64.StdEncoding.DecodeString(*ocrResp.Results[0].Data.Get())
@@ -67,16 +67,16 @@ func Test_asposeocrcloud_DetectRegionsApiService(t *testing.T) {
 				fmt.Println("Decode error:", err)
 				return
 			}
-	
+
 			resultFilePath := "../results/" + taskId + ".txt"
-			err = ioutil.WriteFile(resultFilePath, decodedBytes, 0644)
+			err = os.WriteFile(resultFilePath, decodedBytes, 0644)
 			if err != nil {
 				fmt.Println("Write file error:", err)
 				return
 			}
-	
+
 			fmt.Printf("Task result successfully saved at %s \n", resultFilePath)
-		}else{			
+		} else {
 			fmt.Printf("Sorry, task %s is not completed yet. You can request results later. Task status: %s\n", taskId, *ocrResp.TaskStatus)
 		}
 

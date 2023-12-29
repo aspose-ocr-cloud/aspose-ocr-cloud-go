@@ -22,6 +22,7 @@ type OCRSettingsRecognizeLabel struct {
 	MakeSkewCorrect *bool `json:"makeSkewCorrect,omitempty"`
 	MakeBinarization *bool `json:"makeBinarization,omitempty"`
 	MakeSpellCheck *bool `json:"makeSpellCheck,omitempty"`
+	// Deprecated
 	MakeContrastCorrection *bool `json:"makeContrastCorrection,omitempty"`
 	MakeUpsampling *bool `json:"makeUpsampling,omitempty"`
 	DsrMode *DsrMode `json:"dsrMode,omitempty"`
@@ -198,6 +199,7 @@ func (o *OCRSettingsRecognizeLabel) SetMakeSpellCheck(v bool) {
 }
 
 // GetMakeContrastCorrection returns the MakeContrastCorrection field value if set, zero value otherwise.
+// Deprecated
 func (o *OCRSettingsRecognizeLabel) GetMakeContrastCorrection() bool {
 	if o == nil || IsNil(o.MakeContrastCorrection) {
 		var ret bool
@@ -208,6 +210,7 @@ func (o *OCRSettingsRecognizeLabel) GetMakeContrastCorrection() bool {
 
 // GetMakeContrastCorrectionOk returns a tuple with the MakeContrastCorrection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *OCRSettingsRecognizeLabel) GetMakeContrastCorrectionOk() (*bool, bool) {
 	if o == nil || IsNil(o.MakeContrastCorrection) {
 		return nil, false
@@ -225,6 +228,7 @@ func (o *OCRSettingsRecognizeLabel) HasMakeContrastCorrection() bool {
 }
 
 // SetMakeContrastCorrection gets a reference to the given bool and assigns it to the MakeContrastCorrection field.
+// Deprecated
 func (o *OCRSettingsRecognizeLabel) SetMakeContrastCorrection(v bool) {
 	o.MakeContrastCorrection = &v
 }

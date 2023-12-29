@@ -11,7 +11,7 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"testing"
 
 	asposeocrcloud "github.com/aspose-ocr-cloud/aspose-ocr-cloud-go"
@@ -33,7 +33,7 @@ func Test_asposeocrcloud_RecognizeRegionsApiService(t *testing.T) {
 		filePath := "../samples/greek.PNG" // Path to your file
 
 		// Read your file data and convert it into base64 string
-		fileBytes, err := ioutil.ReadFile(filePath)
+		fileBytes, err := os.ReadFile(filePath)
 		require.Nil(t, err)
 		require.NotNil(t, fileBytes)
 		fileb64Encoded := base64.StdEncoding.EncodeToString(fileBytes)
@@ -51,7 +51,7 @@ func Test_asposeocrcloud_RecognizeRegionsApiService(t *testing.T) {
 
 		// Define zone of image to detect text. To recognize full document, you may omit this part
 		regionOrderValue := int32(0) // order of recognition region
-		topLeftXValue := int32(117) // bounding box pixel coordinates of image part to recognize
+		topLeftXValue := int32(117)  // bounding box pixel coordinates of image part to recognize
 		TopLeftYValue := int32(81)
 		BottomRightXValue := int32(611)
 		BottomRightYValue := int32(98)
@@ -95,7 +95,7 @@ func Test_asposeocrcloud_RecognizeRegionsApiService(t *testing.T) {
 			}
 
 			resultFilePath := "../results/" + taskId + ".txt"
-			err = ioutil.WriteFile(resultFilePath, decodedBytes, 0644)
+			err = os.WriteFile(resultFilePath, decodedBytes, 0644)
 			if err != nil {
 				fmt.Println("Write file error:", err)
 				return
